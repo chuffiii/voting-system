@@ -19,7 +19,7 @@ export default function Dashboard() {
     }
 
     setUser(storedUser);
-  }, []);
+  }, [navigate]);
 
   // Load groups
   useEffect(() => {
