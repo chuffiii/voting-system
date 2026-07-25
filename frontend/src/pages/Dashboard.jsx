@@ -7,7 +7,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(()=>{
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    return storedUser || undefined;
+    return storedUser || null;
   });
 
   const navigate = useNavigate();
