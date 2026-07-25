@@ -5,7 +5,7 @@ import api from "../api";
 export default function Dashboard() {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(()=>{
+  const [user, setUser] = useState(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     return storedUser || null;
   });
@@ -18,7 +18,7 @@ export default function Dashboard() {
       navigate("/");
       return;
     }
-  }, [user,navigate]);
+  }, [user, navigate]);
 
   // Load groups
   useEffect(() => {
@@ -73,13 +73,13 @@ export default function Dashboard() {
   const winner =
     groups.length > 0
       ? groups.reduce(
-          (max, group) => (group.votes > max.votes ? group : max),
-          groups[0]
-        )
+        (max, group) => (group.votes > max.votes ? group : max),
+        groups[0]
+      )
       : null;
 
-  if (user === undefined) {
-    return <p className="text-center mt-10">Loading...</p>;
+  if (!user) {
+    return <p className="text-center mt-10">Redirecting...</p>;
   }
 
   return (
@@ -128,11 +128,10 @@ export default function Dashboard() {
               <button
                 disabled={user.hasVoted}
                 onClick={() => handleVote(group._id)}
-                className={`px-4 py-2 rounded text-white ${
-                  user.hasVoted
+                className={`px-4 py-2 rounded text-white ${user.hasVoted
                     ? "bg-gray-400 cursor-not-allowed"
                     : "bg-green-500 hover:bg-green-600"
-                }`}
+                  }`}
               >
                 {user.hasVoted ? "Already Voted" : "Vote"}
               </button>
