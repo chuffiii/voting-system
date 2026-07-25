@@ -5,21 +5,20 @@ import api from "../api";
 export default function Dashboard() {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState(()=>{
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    return storedUser || undefined;
+  });
 
   const navigate = useNavigate();
 
   // Load user
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-
-    if (!storedUser) {
+    if (!user) {
       navigate("/");
       return;
     }
-
-    setUser(storedUser);
-  }, [navigate]);
+  }, [user,navigate]);
 
   // Load groups
   useEffect(() => {
