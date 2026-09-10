@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "../../../Voting-sytem/frontend/src/pages/Login";
-import Register from "../../../Voting-sytem/frontend/src/pages/Register";
-import Dashboard from "../../../Voting-sytem/frontend/src/pages/Dashboard";
+import Login from "./pages/Login"
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
 
 export default function App() {
   return (

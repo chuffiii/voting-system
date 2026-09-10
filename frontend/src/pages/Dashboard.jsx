@@ -56,6 +56,7 @@ export default function Dashboard() {
         localStorage.setItem("user", JSON.stringify(updatedUser));
         setUser(updatedUser);
 
+        {/*update the group after user's vote*/}
         const groupsRes = await api.get("/groups");
         setGroups(groupsRes.data.groups);
       }
@@ -96,14 +97,12 @@ export default function Dashboard() {
         </button>
       </div>
 
-      {/* Winner */}
+      {/* if Winner exists */}
       {winner && (
         <div className="max-w-4xl mx-auto mb-6">
           <div className="bg-yellow-200 border border-yellow-400 rounded p-4">
-            🏆 Leading Candidate:{" "}
-            <span className="font-bold">{winner.name}</span>
-            {" • "}
-            {winner.votes} votes
+              Leading Candidate:{" "}
+            <span className="font-bold">{winner.name.split(" ")[1]}</span>
           </div>
         </div>
       )}
